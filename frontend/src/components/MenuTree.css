@@ -1,0 +1,13 @@
+.treeview .treeview-btn {
+    display: flex;
+}
+
+.treeview-menu {
+    margin-left: 20px;
+    margin-top: 10px;
+    display: none;
+}
+
+.treeview-menu.menu-open {
+    display: inline-block;
+}

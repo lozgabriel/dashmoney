@@ -1,0 +1,20 @@
+.value-box {
+    width: 300px;
+    padding: 20px;
+    background-color: #fff;
+}
+
+.value-box .value-box-content {
+
+}
+
+.value-box .value-box-content .value-box-header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.value-box .value-box-content .value-box-header i{
+    font-size: 24px;
+    color: #c1c1c1;
+}

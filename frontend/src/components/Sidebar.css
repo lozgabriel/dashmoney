@@ -1,0 +1,8 @@
+.main-sidebar {
+    width: 25%;
+    max-width: 260px;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    height: calc(100vh - 68px);
+    padding-top: 20px;
+}

@@ -1,0 +1,8 @@
+.dashboard {
+    width: 75%;
+}
+
+.dashboard .row-cards {
+    display: flex;
+    gap: 20px;
+}

@@ -1,0 +1,16 @@
+.main-header {
+    display: flex;
+    width: 100%;
+    padding: 0 20px ;
+    border-bottom: 1px solid #ccc;
+}
+
+.main-header .content-nav {
+    padding: 20px 0;
+    display: flex;
+}
+
+.main-header .content-nav .logo {
+    width: 27px;
+    margin-right: 10px;
+}
