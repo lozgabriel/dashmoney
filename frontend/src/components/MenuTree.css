@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.treeview .treeview-btn i{
+    color: #ef9454;
+}
+
 .treeview-menu {
     margin-left: 20px;
     margin-top: 10px;

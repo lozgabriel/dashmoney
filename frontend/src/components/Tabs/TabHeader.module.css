@@ -1,0 +1,14 @@
+.itemTab button{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-right: 13px;
+    padding-right: 7px;
+}
+.itemTab.active button{
+    border-bottom: 2px solid #ef9454;
+    padding-bottom: 4px;
+}
+.itemTab i{
+    color: #ef9454;
+}

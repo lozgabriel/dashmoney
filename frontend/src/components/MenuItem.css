@@ -2,3 +2,7 @@
 .item-menu .item-menu-path {
     display: flex;
 }
+
+.item-menu .item-menu-path i{
+    color: #ef9454;
+}
