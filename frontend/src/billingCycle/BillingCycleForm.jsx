@@ -44,6 +44,7 @@ function BillingCycleForm({ onSubmit, disabled }) {
             <div className={styles.boxFooter}>
                 <button type="submit" className="btn btn-primary" disabled={disabled}>{disabled ? 'Salvando...' : 'Salvar'}</button>
             </div>
+            
         </form>
     )
 }

@@ -1,17 +1,28 @@
 import BillingCycle from "./billingCycle.js";
 
-export async function getAll(req, res) {
+export const getAll = async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
-    const skip = (page - 1) * limit;
+    const { page = 1, limit = 5 } = req.query;
 
-    const billingCycles = await BillingCycle.find().skip(skip).limit(limit);
-    res.status(200).json(billingCycles);
-  } catch (err) {
-    res.status(500).json({ error: 'Erro ao buscar ciclos de cobrança.' });
+    const skip = (parseInt(page) - 1) * parseInt(limit);
+
+    const billingCycles = await BillingCycle.find()
+      .skip(skip)
+      .limit(parseInt(limit))
+      .sort({ createdAt: -1 });  // Opcional: ordenar por data de criação
+
+    const total = await BillingCycle.countDocuments();
+
+    res.json({
+      data: billingCycles,
+      total,
+      page: parseInt(page),
+      pages: Math.ceil(total / limit),
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao buscar ciclos de pagamento' });
   }
-}
+};
 
 export async function create(req, res) {
   try {

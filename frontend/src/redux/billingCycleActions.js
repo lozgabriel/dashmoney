@@ -4,9 +4,12 @@ import axios from 'axios';
 const API_URL = 'http://localhost:3001/api';
 
 export const getList = createAsyncThunk('billingCycle/getList',
-  async (_, { rejectWithValue }) => {
+  async (params = {}, { rejectWithValue }) => {
+    const { page = 1, limit = 5 } = params;
     try {
-      const response = await axios.get(`${API_URL}/billingCycles`);
+      const response = await axios.get(`${API_URL}/billingCycles`, {
+        params: { page, limit }
+      });
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);

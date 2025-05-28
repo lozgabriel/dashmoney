@@ -30,4 +30,5 @@ const billingCycleCreate = createSlice({
   }
 });
 
+export const { resetStatus } = billingCycleCreate.actions;
 export default billingCycleCreate.reducer;
