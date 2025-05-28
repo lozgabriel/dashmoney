@@ -1,0 +1,14 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.table tr th,
+.table tr td{
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.table tr.striped {
+    background-color: #f9fafd;
+}

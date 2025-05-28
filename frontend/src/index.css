@@ -25,6 +25,10 @@ input, button, textarea, select {
   font: inherit;
 }
 
+th {
+  text-align: left;
+}
+
 ul {
 list-style: none;
 padding: 0;
@@ -63,6 +67,7 @@ code {
 
 h1,h2,h3 {
   line-height: 1;  
+  color: #6c757d;
 }
 
 h3 {
@@ -78,6 +83,13 @@ h3 {
   'wght' 300,
   'GRAD' 0,
   'opsz' 24
+}
+
+/* layout */
+
+.text-danger {
+  color: #dc3545;
+  font-size: 12px;
 }
 
 /* helpers */

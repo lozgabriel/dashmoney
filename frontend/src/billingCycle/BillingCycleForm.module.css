@@ -1,0 +1,44 @@
+.formContent {
+    width: 100%;
+}
+
+.formContent .formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.formContent .formGroup label{ 
+    margin-bottom: 5px;
+}
+
+.formContent .formGroup input{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: .375rem .75rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.formContent .formGroup input:focus {
+    border-color: #ef9454;
+    outline: 0;
+    box-shadow: 0 0 2px 3px #fff1e6;
+}
+
+.formContent .boxFooter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formContent .boxFooter button {
+    background-color: #ef9454;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: .375rem .75rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    letter-spacing: 0.5px;
+}
