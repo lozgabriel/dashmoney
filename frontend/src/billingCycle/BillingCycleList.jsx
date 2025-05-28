@@ -1,3 +1,5 @@
+// useSelector: Hook do Redux para ler dados do store.
+// useDispatch: Hook do Redux para enviar ações ao store.
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getList } from '../redux/billingCycleActions';
