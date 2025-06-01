@@ -87,15 +87,40 @@ h3 {
 
 /* layout */
 
+#root {
+  height: 100%;
+}
+
 .text-danger {
   color: #dc3545;
   font-size: 12px;
+}
+
+.btn {
+  background-color: #ef9454;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: .375rem .60rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.btn-delete {
+  background-color: #dc3545;
 }
 
 /* helpers */
 
 .pr-5 {
   padding-right: 5px;
+}
+
+.mr-5 {
+  margin-right: 5px;
 }
 
 .mb-10 {

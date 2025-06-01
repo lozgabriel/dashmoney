@@ -2,7 +2,7 @@ import BillingCycle from "./billingCycle.js";
 
 export const getAll = async (req, res) => {
   try {
-    const { page = 1, limit = 5 } = req.query;
+    const { page = 1, limit = 10 } = req.query;
 
     const skip = (parseInt(page) - 1) * parseInt(limit);
 

@@ -13,6 +13,10 @@
     background-color: #f9fafd;
 }
 
+.billingCycleList .table tr.striped {
+    background-color: #f9fafd;
+}
+
 .billingCycleList .pagination {
     display: flex;
     font-size: 13px;
