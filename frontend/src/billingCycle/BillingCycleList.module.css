@@ -9,12 +9,21 @@
     border-bottom: 1px solid #ccc;
 }
 
-.billingCycleList .table tr.striped {
-    background-color: #f9fafd;
+.billingCycleList .table tr th {
+    padding-top: 0;
+}
+
+.billingCycleList .table tr th:last-child {
+    text-align: center;
+    width: 100px;
 }
 
 .billingCycleList .table tr.striped {
     background-color: #f9fafd;
+}
+
+.billingCycleList .table tr td.btnActions {
+    padding: 0 0 0 15px;
 }
 
 .billingCycleList .pagination {
@@ -28,19 +37,19 @@
     gap: 5px;
  }
 
- .billingCycleList .pagination .paginationControls button{
+.billingCycleList .pagination .paginationControls button{
     border-bottom: 1px solid transparent;
- }
+}
 
- .billingCycleList .pagination .paginationControls button:hover{
+.billingCycleList .pagination .paginationControls button:hover{
     border-bottom: 1px solid #ef9454;
- }
+}
 
 .billingCycleList .pagination span{
     margin-left: auto;
- }
+}
 
- .activePage {
+.activePage {
     font-weight: bold;
     color: #ef9454;
- }
+}

@@ -18,6 +18,7 @@ function BillingCycle() {
     const dispatch = useDispatch();
     const { loading } = useSelector(state => state.billingCycle);
     const [selectedCycle, setSelectedCycle] = useState(null);
+    const activeTab = useSelector(state => state.tab.activeTab);
 
     useEffect(() => {
         dispatch(setActiveTab('tabList'));
@@ -39,16 +40,24 @@ function BillingCycle() {
 
     const handleUpdate = async (data) => {
         try {
-            await dispatch(updateBillingCycle({ id: selectedCycle._id, data })).unwrap();
+            await dispatch(updateBillingCycle({ id: selectedCycle?._id, data })).unwrap();
             await dispatch(getList());
             dispatch(setActiveTab('tabList'));
+            dispatch(setVisibleTabs(['tabList', 'tabCreate']));
             toast.success('Ciclo atualizado com sucesso!');
             setSelectedCycle(null);
+            
         } catch (err) {
             const msg = err.response?.data || err.message || 'Erro desconhecido!';
             toast.error(msg);
             console.error('Failed to update billing cycle:', err);
         }
+    };
+
+    const handleCancel = () => {
+        setSelectedCycle(null);
+        dispatch(setActiveTab('tabList'));
+        dispatch(setVisibleTabs(['tabList', 'tabCreate']));
     };
     
     return (
@@ -66,7 +75,11 @@ function BillingCycle() {
                         <BillingCycleList onEdit={setSelectedCycle} />
                     </TabContent>
                     <TabContent id="tabCreate">
-                        <BillingCycleForm onSubmit={handleSubmit} disabled={loading} />
+                        <BillingCycleForm 
+                            onSubmit={handleSubmit} 
+                            activeTab={activeTab}
+                            disabled={loading} 
+                        />
                     </TabContent>
                     <TabContent id="tabUpdate">
                         {selectedCycle ? (
@@ -74,13 +87,12 @@ function BillingCycle() {
                                 onSubmit={handleUpdate} 
                                 initialData={selectedCycle} 
                                 disabled={loading} 
+                                activeTab={activeTab}
+                                onCancel={handleCancel}
                             />
                         ) : (
                             <p>Selecione um ciclo para editar.</p>
                         )}
-                    </TabContent>
-                    <TabContent id="tabDelete">
-                        <h1>Excluir</h1>
                     </TabContent>
                 </TabsContent>
             </Tabs>

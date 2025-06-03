@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getList } from './billingCycleActions';
+import { getList, deleteBillingCycle } from './billingCycleActions';
 
 const billingCycle = createSlice({
   name: 'billingCycle',
@@ -33,7 +33,19 @@ const billingCycle = createSlice({
       .addCase(getList.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || action.error.message;
+      })
+      .addCase(deleteBillingCycle.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(deleteBillingCycle.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(deleteBillingCycle.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload || action.error.message;
       });
+      
   }
 });
 export const { setPage, setLimit } = billingCycle.actions;

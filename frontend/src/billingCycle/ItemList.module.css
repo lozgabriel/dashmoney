@@ -1,37 +1,35 @@
-.formContent {
-    width: 100%;
+.itemList {
+    flex: 1;
+}
+.itemList h2{
+    margin: 25px 0 15px;
+    font-size: 18px;
 }
 
-.formContent .formGroup {
+.itemList .itemListContent{
+    margin: 15px 0 0 0;
+}
+
+.itemList .formGroup{
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
     font-size: 14px;
 }
 
-.formContent .formGroup label{ 
+.itemList .formGroup label{ 
     margin-bottom: 5px;
 }
 
-.formContent .formGroup input{
+.itemList .formGroup input{
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: .375rem .75rem;
     transition: all 0.2s ease-in-out;
 }
 
-.formContent .formGroup input:focus {
+.itemList .formGroup input:focus {
     border-color: #ef9454;
     outline: 0;
     box-shadow: 0 0 2px 3px #fff1e6;
-}
-
-.formContent .ItemListContent {
-    display: flex;
-    gap: 25px;
-}
-
-.formContent .boxFooter {
-    display: flex;
-    justify-content: flex-end;
 }

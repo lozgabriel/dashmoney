@@ -1,15 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-const API_URL = 'http://localhost:3001/api';
+import api from './api';
 
 export const getList = createAsyncThunk('billingCycle/getList',
   async (params = {}, { rejectWithValue }) => {
     const { page = 1, limit = 10 } = params;
     try {
-      const response = await axios.get(`${API_URL}/billingCycles`, {
-        params: { page, limit }
-      });
+      const response = await api.get('/billingCycles', { params: { page, limit } });
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
@@ -20,7 +16,7 @@ export const getList = createAsyncThunk('billingCycle/getList',
 export const createBillingCycle = createAsyncThunk('billingCycle/create',
   async (data, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${API_URL}/billingCycles`, data);
+      const response = await api.post('/billingCycles', data);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
@@ -31,7 +27,18 @@ export const createBillingCycle = createAsyncThunk('billingCycle/create',
 export const updateBillingCycle = createAsyncThunk('billingCycle/update',
   async ({ id, data }, { rejectWithValue }) => {
     try {
-      const response = await axios.put(`${API_URL}/billingCycles/${id}`, data);
+      const response = await api.put(`/billingCycles/${id}`, data);
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response?.data || err.message);
+    }
+  }
+);
+
+export const deleteBillingCycle = createAsyncThunk('billingCycle/delete',
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await api.delete(`/billingCycles/${id}`);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);

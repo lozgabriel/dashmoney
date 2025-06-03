@@ -97,20 +97,42 @@ h3 {
 }
 
 .btn {
-  background-color: #ef9454;
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 14px;
-  padding: .375rem .60rem;
+  padding: .5rem .6rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   letter-spacing: 0.5px;
   line-height: 1;
 }
 
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-primary {
+  background-color: #ef9454;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #ef9454;
+  color: #df8d53;
+}
+
 .btn-delete {
   background-color: #dc3545;
+}
+
+.offset-btn {
+  padding: .3rem .4rem;
+}
+
+.offset-btn-remove {
+    font-size: 12px;
+    padding: 3px;
 }
 
 /* helpers */
@@ -121,6 +143,9 @@ h3 {
 
 .mr-5 {
   margin-right: 5px;
+}
+.ml-5 {
+  margin-left: 5px;
 }
 
 .mb-10 {

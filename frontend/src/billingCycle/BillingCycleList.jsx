@@ -2,7 +2,7 @@
 // useDispatch: Hook do Redux para enviar ações ao store.
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getList } from '../redux/billingCycleActions';
+import { getList, deleteBillingCycle } from '../redux/billingCycleActions';
 import { toast } from 'react-toastify';
 import { setActiveTab } from '../redux/tabReducer';
 import { setVisibleTabs } from '../redux/showTabReducer';
@@ -48,9 +48,23 @@ function BillingCycleList({ onEdit }) {
 
     const handlePageUpdate = (item) => {
         dispatch(setActiveTab('tabUpdate'));
-        dispatch(setVisibleTabs(['tabList', 'tabCreate', 'tabUpdate']));
+        dispatch(setVisibleTabs(['tabUpdate']));
         onEdit(item)
     }
+
+    const handleDelete = async (id) => {
+        if (window.confirm('Tem certeza que deseja excluir este ciclo?')) {
+            try {
+                await dispatch(deleteBillingCycle(id)).unwrap();
+                toast.success('Ciclo excluído com sucesso!');
+                dispatch(getList({ page: currentPage, limit }));
+            } catch (err) {
+                const msg = err.response?.data || err.message || 'Erro desconhecido!';
+                toast.error(msg);
+                console.error('Erro ao excluir ciclo:', err);
+            }
+        }
+    };
 
     const renderPagination = () => {
         const pages = [];
@@ -103,11 +117,11 @@ function BillingCycleList({ onEdit }) {
                     <tr key={item._id || index} className={`${index % 2 === 0 ? styles.striped : ''}`}>
                         <td>{item.name}</td>
                         <td>{item.date ? item.date.substring(0, 10).split('-').reverse().join('/') : 'Sem data'}</td>
-                        <td>
-                            <button className="btn mr-5" onClick={() => handlePageUpdate(item)}>
+                        <td className={styles.btnActions}>
+                            <button className="btn btn-primary offset-btn mr-5" onClick={() => handlePageUpdate(item)}>
                                 <i className="material-symbols-outlined">edit</i>
                             </button>
-                            <button className="btn btn-delete" onClick={() => console.log(`Excluir ${item._id}`)}>
+                            <button className="btn btn-delete offset-btn" onClick={() => handleDelete(item._id)}>
                                 <i className="material-symbols-outlined">delete</i>
                             </button>
                         </td>

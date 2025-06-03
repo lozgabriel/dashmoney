@@ -1,21 +1,39 @@
 import { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useFieldArray } from 'react-hook-form';
+import ItemList from './ItemList';
 import styles from "./BillingCycleForm.module.css";
 
-function BillingCycleForm({ onSubmit, disabled, initialData }) {
-    const { register, handleSubmit, formState: { errors }, reset} = useForm({
+function BillingCycleForm({ onSubmit, onCancel, disabled, initialData, activeTab }) {
+
+    const { register, handleSubmit, formState: { errors }, reset, control} = useForm({
         defaultValues: {
             name: initialData?.name || '',
-            date: initialData?.date ? initialData.date.substring(0, 10) : ''
+            date: initialData?.date ? initialData.date.substring(0, 10) : '',
+            credits: initialData?.credits && initialData.credits.length > 0
+            ? initialData.credits
+            : [{ name: '', value: '' }],
+            debts: initialData?.debts && initialData.debts.length > 0
+            ? initialData.debts
+            : [{ name: '', value: '' }]
         }
+    });
+
+    const { fields: creditFields, append: appendCredit, remove: removeCredit } = useFieldArray({
+        control,
+        name: "credits"
+    });
+
+    const { fields: debtFields, append: appendDebt, remove: removeDebt } = useFieldArray({
+        control,
+        name: "debts"
     });
 
     const onFormSubmit = (data) => {
         onSubmit({
             name: data.name,
             date: data.date,
-            credits: initialData?.credits || [],
-            debts: initialData?.debts || []
+            credits: data.credits || [],
+            debts: data.debts || []
         }); 
         reset();
     };
@@ -23,7 +41,13 @@ function BillingCycleForm({ onSubmit, disabled, initialData }) {
     useEffect(() => {
         reset({
             name: initialData?.name || '',
-            date: initialData?.date ? initialData.date.substring(0, 10) : ''
+            date: initialData?.date ? initialData.date.substring(0, 10) : '',
+            credits: initialData?.credits && initialData.credits.length > 0
+                ? initialData.credits
+                : [{ name: '', value: '' }],
+            debts: initialData?.debts && initialData.debts.length > 0
+                ? initialData.debts
+                : [{ name: '', value: '' }]
         });
     }, [initialData, reset]);
 
@@ -56,8 +80,36 @@ function BillingCycleForm({ onSubmit, disabled, initialData }) {
                 {errors.date && <span className="text-danger">{errors.date.message}</span>}
             </div>
 
+            <div className={styles.ItemListContent}>
+                <ItemList 
+                    title="Créditos" 
+                    type="credits" 
+                    register={register} 
+                    errors={errors} 
+                    disabled={disabled} 
+                    fields={creditFields} 
+                    append={appendCredit} 
+                    remove={removeCredit} 
+                />
+
+                <ItemList 
+                    title="Débitos" 
+                    type="debts" 
+                    register={register} 
+                    errors={errors} 
+                    disabled={disabled} 
+                    fields={debtFields} 
+                    append={appendDebt} 
+                    remove={removeDebt} 
+                />
+            </div>
+
             <div className={styles.boxFooter}>
                 <button type="submit" className="btn btn-primary" disabled={disabled}>{disabled ? 'Salvando...' : 'Salvar'}</button>
+                
+                {activeTab === 'tabUpdate' && (
+                    <button type="button" className="btn btn-secondary ml-5" onClick={onCancel}>Cancelar</button>
+                )}
             </div>
             
         </form>
