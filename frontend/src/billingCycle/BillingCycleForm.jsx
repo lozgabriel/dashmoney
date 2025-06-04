@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import ItemList from './ItemList';
+import ValueBox from '../widget/ValueBox';
 import styles from "./BillingCycleForm.module.css";
 
 function BillingCycleForm({ onSubmit, onCancel, disabled, initialData, activeTab }) {
-
     const { register, handleSubmit, formState: { errors }, reset, control} = useForm({
         defaultValues: {
             name: initialData?.name || '',
@@ -51,6 +51,29 @@ function BillingCycleForm({ onSubmit, onCancel, disabled, initialData, activeTab
         });
     }, [initialData, reset]);
 
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(value);
+    };
+
+    const calculateCreditValues = () => {
+        return creditFields.reduce((sum, item, index) => {
+            const value = parseFloat(control._formValues.credits?.[index]?.value) || 0;
+            return sum + value;
+        }, 0);
+    };
+
+    const calculateDebtValues = () => {
+        return debtFields.reduce((sum, item, index) => {
+            const value = parseFloat(control._formValues.debts?.[index]?.value) || 0;
+            return sum + value;
+        }, 0);
+    };
+
+    const consolidatedValues = calculateCreditValues() - calculateDebtValues();
+
     return (
         <form className={styles.formContent} onSubmit={handleSubmit(onFormSubmit)}>
             <div className={styles.formGroup}>
@@ -78,6 +101,15 @@ function BillingCycleForm({ onSubmit, onCancel, disabled, initialData, activeTab
                     {...register('date', { required: 'A data é obrigatória' })}
                 />
                 {errors.date && <span className="text-danger">{errors.date.message}</span>}
+            </div>
+
+            <div className={styles.infoBalance}>
+                <h2 className={styles.title}>Balanço</h2>
+                <div className={styles.infoBalanceBox}>
+                    <ValueBox value={formatCurrency(calculateCreditValues())} text="Total de Créditos" icon="account_balance"/>   
+                    <ValueBox value={formatCurrency(calculateDebtValues())} text="Total de Débitos" icon="credit_card"/>   
+                    <ValueBox value={formatCurrency(consolidatedValues)} text="Valor Consolidado" icon="payments"/>   
+                </div>
             </div>
 
             <div className={styles.ItemListContent}>

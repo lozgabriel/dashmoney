@@ -26,6 +26,18 @@
     box-shadow: 0 0 2px 3px #fff1e6;
 }
 
+.formContent .infoBalance .title {
+    font-size: 18px;
+    margin: 40px 0 15px 0;
+}
+
+.formContent .infoBalance .infoBalanceBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
 .formContent .ItemListContent {
     display: flex;
     gap: 25px;

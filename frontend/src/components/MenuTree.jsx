@@ -4,7 +4,7 @@ import './MenuTree.css';
 function MenuTree(props) {
     const [open, setOpen] = useState(false);
 
-    function openMenu(e) {
+    const openMenu = (e) => {
         e.preventDefault();
         setOpen(!open);
     }

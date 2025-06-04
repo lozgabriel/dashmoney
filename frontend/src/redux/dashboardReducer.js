@@ -3,13 +3,13 @@ import { getSummary } from './dashboardActions';
 
 const dashboard = createSlice({
   name: 'dashboard',
-  initialState: { summary: {credit: 0, debit: 0}, loading: false, error: null },
+  initialState: { summary: {credit: 0, debt: 0}, loading: false, error: null },
   reducers: {
     setCredit: (state, action) => {
       state.summary.credit = action.payload;
     },
     setDebit: (state, action) => {
-      state.summary.debit = action.payload;
+      state.summary.debt = action.payload;
     },
   },
   extraReducers: (builder) => {

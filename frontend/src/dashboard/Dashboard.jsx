@@ -8,7 +8,7 @@ import './Dashboard.css'
 
 function Dashboard() {
     const credit = useSelector((state) => state.dashboard.summary.credit) || 0;
-    const debit = useSelector((state) => state.dashboard.summary.debit) || 0;
+    const debt = useSelector((state) => state.dashboard.summary.debt) || 0;
     const loading = useSelector((state) => state.dashboard.loading);
     const error = useSelector((state) => state.dashboard.error);
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ function Dashboard() {
     };
 
     // Com useMemo: O cálculo só é refeito se credit ou debit mudarem
-    const consolidatedValue = useMemo(() => credit - debit, [credit, debit]);
+    const consolidatedValue = useMemo(() => credit - debt, [credit, debt]);
     
     // Dispara a busca de dados ao montar o componente
     useEffect(() => {
@@ -36,7 +36,7 @@ function Dashboard() {
                 {error && <p>Erro: {error}</p>}
                 <div className="row-cards">
                     <ValueBox value={formatCurrency(credit)} text="Total de Créditos" icon="account_balance"/>   
-                    <ValueBox value={formatCurrency(debit)} text="Total de Débitos" icon="credit_card"/>   
+                    <ValueBox value={formatCurrency(debt)} text="Total de Débitos" icon="credit_card"/>   
                     <ValueBox value={formatCurrency(consolidatedValue)} text="Valor Consolidado" icon="payments"/>   
                 </div>
             </Content>
