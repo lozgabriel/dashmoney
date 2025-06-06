@@ -1,0 +1,57 @@
+
+button, .btn {
+  border-radius: 0;
+  text-align: inherit;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  color: inherit;
+  font: inherit;
+}
+
+.btn {
+  display: inline-block;
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-2) var(--spacing-3);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:focus {
+  outline: 0.125rem solid rgba(239, 148, 84, 0.5);
+  outline-offset: 0.125rem;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-secondary);
+}
+
+.btn-delete {
+  background-color: var(--color-danger);
+}
+
+.offset-btn {
+  padding: 0.3rem 0.4rem;
+}
+
+.offset-btn-remove {
+  font-size: var(--font-size-xs);
+  padding: var(--spacing-1);
+}

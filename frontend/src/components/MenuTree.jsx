@@ -15,7 +15,7 @@ function MenuTree(props) {
                 <i className="material-symbols-outlined">
                     {open ? 'expand_more' : 'chevron_right'}
                 </i>                
-                <i className="material-symbols-outlined pr-5">{props.icon}</i>
+                <i className="material-symbols-outlined pr-1">{props.icon}</i>
                 {props.label}
             </button>
             <ul className={`treeview-menu ${open ? ' menu-open' : ''}`}>

@@ -6,7 +6,7 @@ function ValueBox(props) {
         <div className="value-box-content">
             <div className="value-box-header">
                 <h2>{props.value}</h2>
-                <i className="material-symbols-outlined pr-5">{props.icon}</i>
+                <i className="material-symbols-outlined pr-1">{props.icon}</i>
             </div>
             <p>{props.text}</p>
         </div>

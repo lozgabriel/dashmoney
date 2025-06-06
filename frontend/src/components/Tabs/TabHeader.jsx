@@ -22,7 +22,7 @@ function TabHeader(props) {
                 className={styles.itemTab}
                 onClick={handleTabClick}
             >
-                <i className="material-symbols-outlined pr-5">{props.icon}</i>
+                <i className="material-symbols-outlined pr-1">{props.icon}</i>
                 {props.label}
             </button>
         </li>
