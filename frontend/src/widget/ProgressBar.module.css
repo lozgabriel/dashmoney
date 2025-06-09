@@ -1,0 +1,24 @@
+.progressBar {
+    max-width: 300px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.progressBar h3{
+    margin-bottom: 15px;
+}
+
+.progressBar .progressBarContainer{
+    display: flex;
+}
+.progressBar .progressBarContainer .bgGreen{
+    background-color: #14d424;
+    height: 10px;
+}
+
+.progressBar .progressBarContainer .bgRed{
+    background-color: #e42424;
+    height: 10px;
+}

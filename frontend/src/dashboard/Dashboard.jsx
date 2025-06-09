@@ -4,6 +4,7 @@ import { getSummary } from '../redux/dashboardActions';
 import ContentHeader from "../components/ContentHeader"
 import Content from "../components/Content"
 import ValueBox from "../widget/ValueBox"
+import ProgressBar from '../widget/ProgressBar';
 import './Dashboard.css'
 
 function Dashboard() {
@@ -39,6 +40,9 @@ function Dashboard() {
                     <ValueBox value={formatCurrency(debt)} text="Total de Débitos" icon="credit_card"/>   
                     <ValueBox value={formatCurrency(consolidatedValue)} text="Valor Consolidado" icon="payments"/>   
                 </div>
+            </Content>
+            <Content>
+                <ProgressBar credits={credit} debts={debt}/>
             </Content>
         </div>
     )
