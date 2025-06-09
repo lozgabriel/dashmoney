@@ -140,7 +140,7 @@ function BillingCycleForm({ onSubmit, onCancel, disabled, initialData, activeTab
                 <button type="submit" className="btn btn-primary" disabled={disabled}>{disabled ? 'Salvando...' : 'Salvar'}</button>
                 
                 {activeTab === 'tabUpdate' && (
-                    <button type="button" className="btn btn-secondary ml-5" onClick={onCancel}>Cancelar</button>
+                    <button type="button" className="btn btn-secondary ml-1" onClick={onCancel}>Cancelar</button>
                 )}
             </div>
             

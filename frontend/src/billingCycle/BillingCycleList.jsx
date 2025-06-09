@@ -118,7 +118,7 @@ function BillingCycleList({ onEdit }) {
                         <td>{item.name}</td>
                         <td>{item.date ? item.date.substring(0, 10).split('-').reverse().join('/') : 'Sem data'}</td>
                         <td className={styles.btnActions}>
-                            <button className="btn btn-primary offset-btn mr-5" onClick={() => handlePageUpdate(item)}>
+                            <button className="btn btn-primary offset-btn mr-1" onClick={() => handlePageUpdate(item)}>
                                 <i className="material-symbols-outlined">edit</i>
                             </button>
                             <button className="btn btn-delete offset-btn" onClick={() => handleDelete(item._id)}>
