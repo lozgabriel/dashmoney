@@ -6,24 +6,10 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 0.9375rem;
-    font-size: var(--font-size-sm);
 }
 
 .formContent .formGroup label{ 
     margin-bottom: 5px;
-}
-
-.formContent .formGroup input{
-    border: 1px solid #ccc;
-    border-radius: var(--border-radius-md);
-    padding: .375rem .75rem;
-    transition: all 0.2s ease-in-out;
-}
-
-.formContent .formGroup input:focus {
-    border-color: #ef9454;
-    outline: 0;
-    box-shadow: 0 0 2px 3px #fff1e6;
 }
 
 .formContent .infoBalance .title {

@@ -1,5 +1,6 @@
 // useSelector: Hook do Redux para ler dados do store.
 // useDispatch: Hook do Redux para enviar ações ao store.
+import Search from "../components/Common/Search/Search";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getList, deleteBillingCycle } from '../redux/billingCycleActions';
@@ -99,6 +100,7 @@ function BillingCycleList({ onEdit }) {
 
     return (
     <div className={styles.billingCycleList}>
+        <Search />
         <table className={styles.table}>
             <thead>
                 <tr>

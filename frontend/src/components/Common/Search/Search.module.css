@@ -1,0 +1,7 @@
+.searchContainer {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -10px;
+    z-index: 1;
+}

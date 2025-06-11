@@ -32,6 +32,16 @@ a {
   color: inherit;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+input {
+    font-size: var(--font-size-sm);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-md);
+    padding: .375rem .75rem;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+    border-color: #ef9454;
+    outline: 0;
+    box-shadow: 0 0 2px 3px #fff1e6;
 }
